@@ -6,15 +6,18 @@
     "require": {
         "php": ">=8.2",
         "ext-ctype": "*",
+        "ext-gmp": "*",
         "ext-iconv": "*",
+        "lstrojny/functional-php": "^1.17",
+        "psr/simple-cache": "^3.0",
+        "symfony/cache": "7.0.*",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.0.*",
+        "symfony/http-client": "7.0.*",
         "symfony/runtime": "7.0.*",
         "symfony/yaml": "7.0.*"
-    },
-    "require-dev": {
     },
     "config": {
         "allow-plugins": {
@@ -26,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "OverkillFibonacci\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "OverkillFibonacci\\Tests\\": "tests/"
         }
     },
     "replace": {
@@ -54,6 +57,12 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "start-server": [
+            "symfony server:start --no-tls"
+        ],
+        "run-tests": [
+            "bin/phpunit"
         ]
     },
     "conflict": {
@@ -64,5 +73,13 @@
             "allow-contrib": false,
             "require": "7.0.*"
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.56",
+        "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest",
+        "symfony/browser-kit": "7.0.*",
+        "symfony/css-selector": "7.0.*",
+        "symfony/phpunit-bridge": "^7.0"
     }
 }

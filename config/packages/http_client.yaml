@@ -1,0 +1,5 @@
+framework:
+    http_client:
+        scoped_clients:
+            fibonacci.client:
+                base_uri: 'http://app:8000'
