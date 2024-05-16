@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OverkillFibonacci\Controller;
 
-use OverkillFibonacci\Fibonacci;
+use OverkillFibonacci\Adapters\TailRecursionFibonacci;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +18,7 @@ class FibonacciController
     private $fibonacci;
 
     public function __construct(
-        #[Autowire(service: Fibonacci::class)]
+        #[Autowire(service: TailRecursionFibonacci::class)]
         callable $fibonacci
     ) {
         $this->fibonacci = $fibonacci;

@@ -4,14 +4,19 @@ namespace OverkillFibonacci\Adapters;
 
 use OverkillFibonacci\Fibonacci;
 use Psr\SimpleCache\CacheInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class WithCache extends Fibonacci
 {
     private Fibonacci $fibonacci;
     private CacheInterface $cache;
 
-    public function __construct(Fibonacci $fibonacci, CacheInterface $cache)
-    {
+    public function __construct(
+        #[Autowire(service: 'http_fibonacci')]
+        Fibonacci $fibonacci,
+        #[Autowire(service: 'fibonacci.cache.psr16')]
+        CacheInterface $cache
+    ) {
         $this->fibonacci = $fibonacci;
         $this->cache = $cache;
     }

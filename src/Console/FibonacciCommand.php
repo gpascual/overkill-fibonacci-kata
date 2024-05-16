@@ -2,6 +2,7 @@
 
 namespace OverkillFibonacci\Console;
 
+use OverkillFibonacci\Adapters\WithCache;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,7 +22,7 @@ class FibonacciCommand extends Command
     private $fibonacci;
 
     public function __construct(
-        #[Autowire(service: 'http_fibonacci')]
+        #[Autowire(service: WithCache::class)]
         callable $fibonacci
     ) {
         parent::__construct();

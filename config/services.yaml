@@ -27,3 +27,8 @@ services:
         parent: 'cache.adapter.redis'
         tags:
             - { name: 'cache.pool', namespace: 'fibonacci' }
+
+    fibonacci.cache.psr16:
+        class: Symfony\Component\Cache\Psr16Cache
+        arguments:
+            - '@fibonacci.cache.adapter.redis'
