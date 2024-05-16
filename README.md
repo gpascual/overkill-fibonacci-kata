@@ -80,6 +80,61 @@ You can make use of the Symfony Cache component already installed https://symfon
 
 Modify the service definition and the autowiring as you see fit.
 
+## Task 3: Obtaining intermediate results.
+
+There is a new requirement on top of Task 2.
+
+We need to compute the intermediate results for Fibonacci. Example: if the request is for `fibonacci(3)`, return the fibonacci computation all intermediate numbers (fibonnaci of 0...3, all included).
+
+As an architecture kata, design a system that supports this new requirement, with the condition of supporting the existing behaviour in clients, and as fewer pieces of new technology as possible.
+
+Expected:
+
+1. Document (or a few notes) of 1/2-1 page documenting:
+2. Where to introduce these changes
+3. Which new parts or modified parts are affected
+4. Which new pieces of technology (if any) are needed
+5. How do we ensure the continuity of existing features
+6. Other alternatives that you considered and why you didn't choose them
+
+How to proceed:
+
+1. Explain this exercise.
+2. Break into groups. Each group creates a solution. ~10-15 minutes for that. Create such document
+3. Get together and discuss the solutions.
+
+## Task 4: Oh no! The Fibonorials are here to terrorize us!!!
+
+A Fibonorial number is the product of all the Fibonacci sequence from *F<sub>n</sub>* to *F<sub>1</sub>*.
+
+```math
+\begin{equation}
+n!_F := \prod_{\substack{i = 1}} ^ {n} F_i, n \geq 1 
+\end{equation}
+```
+
+You can also represent it by the recurrence relation:
+
+```math
+\begin{equation}
+0!_F := 1
+\end{equation}
+```
+and
+
+```math
+\begin{equation}
+n!_F := F_n  \times \left( n - 1 \right)!_F
+\end{equation}
+```
+for n > 0.
+
+Again! You can go to the Wikipedia [article](https://en.wikipedia.org/wiki/Fibonorial) to dig even more into it.
+
+We need to offer a `fibonorial` command that performs reasonably and works remotely in the same fashion as the previous command.
+
+Please! Consider everything we have done so far in previous tasks (remove recursion, cache results, intermediate results).
+
 ## Notes
 
 The environment is built via a `make init`.
